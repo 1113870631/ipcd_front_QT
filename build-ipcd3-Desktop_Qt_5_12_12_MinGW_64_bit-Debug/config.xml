@@ -7,5 +7,7 @@
   </BASE_CONFIG>
   <IPCD_LIST>
     <ipcd>ipcd</ipcd>
+    <ipcd>IPCD_XXXX</ipcd>
+    <ipcd>IPCD_XXXX1</ipcd>
   </IPCD_LIST>
 </IPCD_MAN>

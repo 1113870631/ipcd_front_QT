@@ -14,9 +14,9 @@ public:
     IPCD_back_start back_start;
     IPCD_add back_add;
     IPCD_del back_del;
-    IPCD_lint back_lint;
     IPCD_back_destroy back_destroy;
     IPCD_remove back_remove;
+    IPCD_get_one_node back_get_one;
 
     IPCD_MANGER_FRONT();
     ~IPCD_MANGER_FRONT();

@@ -8,10 +8,10 @@ IPCD_MANGER_FRONT::IPCD_MANGER_FRONT()
 {
 
     /* 加载后端接口库 */
-    HMODULE  g_hDll = LoadLibrary(L"ICPD_BACK_PORT.dll");
+    HMODULE  g_hDll = LoadLibrary(L"libipcd_backport.dll");
     if (g_hDll == NULL)
     {
-        printf("加载DLLTest1.dll动态库失败\n");
+        printf("libipcd_backport.dll fail\n");
         exit(0);
     }
 
@@ -36,13 +36,6 @@ IPCD_MANGER_FRONT::IPCD_MANGER_FRONT()
         exit(0);
     }
 
-    this->back_lint = (IPCD_lint)GetProcAddress(g_hDll, "IPCD_del");
-    if (this->back_lint == NULL)
-    {
-        printf("back port init fail\n");
-        exit(0);
-    }
-
     this->back_destroy = (IPCD_back_destroy)GetProcAddress(g_hDll, "IPCD_back_destroy");
     if (this->back_destroy == NULL)
     {
@@ -52,6 +45,13 @@ IPCD_MANGER_FRONT::IPCD_MANGER_FRONT()
 
     this->back_remove = (IPCD_remove)GetProcAddress(g_hDll, "IPCD_remove");
     if (this->back_remove == NULL)
+    {
+        printf("back port init fail\n");
+        exit(0);
+    }
+
+    this->back_get_one = (IPCD_get_one_node)GetProcAddress(g_hDll, "IPCD_get_one_node");
+    if (this->back_get_one == NULL)
     {
         printf("back port init fail\n");
         exit(0);
