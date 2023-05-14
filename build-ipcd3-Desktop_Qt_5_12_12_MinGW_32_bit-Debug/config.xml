@@ -1,0 +1,14 @@
+local config 
+LOCAL_DIR=D:\
+LINUX_DIR=Z:\EXT\my_branch\
+MY_SVN_REMOTE_BASE_DIR=svn://svn.svnbucket.com/1113870631/test/
+local config
+
+IPCD_list
+1
+2
+3
+4
+5
+6
+7
