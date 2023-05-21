@@ -15,8 +15,8 @@ IPCD_MANGER_FRONT::IPCD_MANGER_FRONT()
         exit(0);
     }
 
-    this->back_start = (IPCD_back_start)GetProcAddress(g_hDll, "IPCD_back_start");
-    if (this->back_start == NULL)
+    this->back_init = (IPCD_init)GetProcAddress(g_hDll, "IPCD_init");
+    if (this->back_init == NULL)
     {
         printf("back port init fail\n");
         exit(0);
@@ -36,22 +36,22 @@ IPCD_MANGER_FRONT::IPCD_MANGER_FRONT()
         exit(0);
     }
 
-    this->back_destroy = (IPCD_back_destroy)GetProcAddress(g_hDll, "IPCD_back_destroy");
+    this->back_destroy = (IPCD_destroy)GetProcAddress(g_hDll, "IPCD_destroy");
     if (this->back_destroy == NULL)
     {
         printf("back port init fail\n");
         exit(0);
     }
 
-    this->back_remove = (IPCD_remove)GetProcAddress(g_hDll, "IPCD_remove");
-    if (this->back_remove == NULL)
+    this->back_get_each = (IPCD_list_foreach)GetProcAddress(g_hDll, "IPCD_list_foreach");
+    if (this->back_get_each == NULL)
     {
         printf("back port init fail\n");
         exit(0);
     }
 
-    this->back_get_one = (IPCD_get_one_node)GetProcAddress(g_hDll, "IPCD_get_one_node");
-    if (this->back_get_one == NULL)
+    this->back_node2info = (IPCD_node2info)GetProcAddress(g_hDll, "IPCD_node2info");
+    if (this->back_node2info == NULL)
     {
         printf("back port init fail\n");
         exit(0);

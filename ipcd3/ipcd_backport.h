@@ -6,8 +6,7 @@
 
 typedef struct  ipcd_info
 {
-  int pos;
-  char *ipcd_name;
+  char ipcd_name[1024];
 }IPCD_INFO;
 
 typedef struct Node {
@@ -36,13 +35,15 @@ typedef struct  ipcd_manger
     list *ipcd_info_list;
 }IPCD_MANGER;
 
-/* 对外接口 */
-typedef void *(*IPCD_back_start)(void);
-typedef int(*IPCD_add)(char * name, IPCD_MANGER *ipcd_man);
-typedef int(*IPCD_del)(char * name, IPCD_MANGER *ipcd_man);
-typedef int(*IPCD_back_destroy)(IPCD_MANGER * ipcd_man);
-typedef int (*IPCD_remove)(char * name, IPCD_MANGER *ipcd_man);
-typedef OneNode* (*IPCD_get_one_node)(IPCD_MANGER *ipcd_man, int flag);
+typedef void (*process)(void *ipcd_info, void* userdata);
 
+/* 对外接口 */
+typedef void* (*IPCD_init)(void);
+typedef void* (*IPCD_node2info)(void* node);
+typedef void (*IPCD_destroy)(void *ipcd_man);
+typedef int (*IPCD_add)(char * name,  void *ipcd_man);
+typedef int (*IPCD_del)(char * name, void *ipcd_man);
+typedef int (*IPCD_lint)(char * name, void *ipcd_man);
+typedef int (*IPCD_list_foreach)(void *pstIpcdMan, void ** ppaptrarr);
 
 #endif // !__IPCD_BACK_PORT_H_

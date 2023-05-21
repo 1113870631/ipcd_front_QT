@@ -86,9 +86,19 @@ public:
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMaximumSize(QSize(1000, 40));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Calibri"));
-        font1.setPointSize(14);
+        font1.setFamily(QString::fromUtf8("Consolas"));
+        font1.setPointSize(16);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
         label_2->setFont(font1);
+        label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"font: 75 16pt \"Consolas\";\n"
+"border-radius: 40px;                                            \n"
+"background-color: argb(60, 60, 60, 130);         \n"
+"color: rgb(255, 255, 255);                              \n"
+"\n"
+"}"));
         label_2->setFrameShape(QFrame::Box);
         label_2->setLineWidth(2);
         label_2->setAlignment(Qt::AlignCenter);
@@ -97,6 +107,23 @@ public:
 
         listWidget = new QListWidget(frame);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setMinimumSize(QSize(0, 514));
+        listWidget->setStyleSheet(QString::fromUtf8("QListView {\n"
+"	height: 60px;\n"
+"	font: 75 12pt \"Consolas\";\n"
+"	border: 15px solid white;\n"
+"	border-radius: 10px;\n"
+"}QListView::item:hover {\n"
+"	background-color: transparent;\n"
+"	padding: 10px;\n"
+"	border-left: 3px solid rgb(130, 130, 130);\n"
+"}\n"
+"QListView::item:selected {\n"
+"	background-color: transparent;\n"
+"	color: black;\n"
+"	padding: 10px;\n"
+"	border-left: 3px solid black;\n"
+"}"));
 
         verticalLayout_2->addWidget(listWidget);
 
@@ -112,48 +139,216 @@ public:
         pushButton_lint = new QPushButton(frame_2);
         pushButton_lint->setObjectName(QString::fromUtf8("pushButton_lint"));
         pushButton_lint->setMinimumSize(QSize(0, 40));
+        pushButton_lint->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_lint);
 
         pushButton_diff = new QPushButton(frame_2);
         pushButton_diff->setObjectName(QString::fromUtf8("pushButton_diff"));
         pushButton_diff->setMinimumSize(QSize(0, 40));
+        pushButton_diff->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_diff);
 
         pushButton_del = new QPushButton(frame_2);
         pushButton_del->setObjectName(QString::fromUtf8("pushButton_del"));
         pushButton_del->setMinimumSize(QSize(0, 40));
+        pushButton_del->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_del);
 
         pushButton_add = new QPushButton(frame_2);
         pushButton_add->setObjectName(QString::fromUtf8("pushButton_add"));
         pushButton_add->setMinimumSize(QSize(0, 40));
+        pushButton_add->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_add);
 
         pushButton_remove = new QPushButton(frame_2);
         pushButton_remove->setObjectName(QString::fromUtf8("pushButton_remove"));
         pushButton_remove->setMinimumSize(QSize(0, 40));
+        pushButton_remove->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_remove);
 
         pushButton_7 = new QPushButton(frame_2);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
         pushButton_7->setMinimumSize(QSize(0, 40));
+        pushButton_7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_7);
 
         pushButton_5 = new QPushButton(frame_2);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setMinimumSize(QSize(0, 40));
+        pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_5);
 
         pushButton_8 = new QPushButton(frame_2);
         pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
         pushButton_8->setMinimumSize(QSize(0, 40));
+        pushButton_8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #ffffff;\n"
+"    border: 1px solid #dcdfe6;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ecf5ff;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed, QPushButton:checked {\n"
+"    border: 1px solid #3a8ee6;\n"
+"    color: #409eff;\n"
+"}\n"
+"\n"
+"#button3 {\n"
+"    border-radius: 20px;\n"
+"}\n"
+""));
 
         verticalLayout->addWidget(pushButton_8);
 
