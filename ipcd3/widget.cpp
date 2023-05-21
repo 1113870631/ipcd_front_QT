@@ -5,16 +5,6 @@
 #include <QInputDialog>
 #include <iostream>
 
-void back1(void* tmp, void *userdata)
-{
-    Widget* wi = (Widget*) userdata;
-
-    IPCD_INFO *info = (IPCD_INFO *)wi->ipcd_man_front->back_node2info(tmp);
-    printf("name1:%s\n",info->ipcd_name);
-    //QListWidgetItem *tmp2 = new QListWidgetItem(info->ipcd_name);
-}
-
-
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -35,7 +25,7 @@ Widget::Widget(QWidget *parent)
     tmp_back_man = this->ipcd_man_front->ipcd_man_back;
 
     /* 链接item 点击信号和槽 */
-    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &Widget::on_list_item_clicked);
+    QObject::connect(ui->listWidget_now, &QListWidget::itemClicked, this, &Widget::on_list_item_clicked);
 
     /* 获取所有IPCD info */
     num = this->ipcd_man_front->back_get_each(tmp_back_man, &info_arr);
@@ -44,10 +34,10 @@ Widget::Widget(QWidget *parent)
     {
        void *node_tmp = *(void **)info_arr_tmp;
        IPCD_INFO *tmp_info =(IPCD_INFO *)this->ipcd_man_front->back_node2info(node_tmp);
-       info_arr_tmp += sizeof(void*);
+       info_arr_tmp =(char*)info_arr_tmp + sizeof(void*);
        /* 设置list */
        QListWidgetItem *tmp_item = new QListWidgetItem(tmp_info->ipcd_name);
-       ui->listWidget->addItem(tmp_item);
+       ui->listWidget_now->addItem(tmp_item);
     }
 
     free(info_arr);
@@ -87,8 +77,8 @@ void Widget::on_pushButton_del_clicked()
     QByteArray ba = this->ipcd_man_front->curr_ipcd_iteml->text().toLatin1(); // must
     ch=ba.data();
     this->ipcd_man_front->back_del(ch,this->ipcd_man_front->ipcd_man_back);
-    int row = ui->listWidget->currentRow();
-    ui->listWidget->takeItem(row);
+    int row = ui->listWidget_now->currentRow();
+    ui->listWidget_now->takeItem(row);
     this->ipcd_man_front->curr_ipcd_iteml = NULL;
 }
 
@@ -100,7 +90,7 @@ void Widget::on_pushButton_add_clicked()
     QLineEdit::EchoMode echoMode=QLineEdit::Normal;//输入框的文本内容为正常显示
     //QLineEdit::EchoMode echoMode=QLineEdit::Password;//输入框的文本内容为密码方式显示
     bool ok=false;
-    QString text=QInputDialog::getText(this,dlgTitle,txtLabel,echoMode,defaultInput,&ok);
+    QString text=QInputDialog::getText(this,dlgTitle,txtLabel,echoMode,defaultInput,&ok,Qt::MSWindowsFixedSizeDialogHint);
     if(ok && !text.isEmpty())
     {
         char*  ch;
@@ -109,7 +99,7 @@ void Widget::on_pushButton_add_clicked()
         if(this->ipcd_man_front->back_add(ch,this->ipcd_man_front->ipcd_man_back) == 0)
         {
             QListWidgetItem *tmp = new QListWidgetItem(text);
-            ui->listWidget->addItem(tmp);
+            ui->listWidget_now->addItem(tmp);
             qDebug() << text <<endl;
         }
         else
